@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<flow xmlns="http://www.springframework.org/schema/webflow"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/webflow
+        http://www.springframework.org/schema/webflow/spring-webflow-2.0.xsd">
+
+	<secured attributes="ROLE_USER" />
+
+	<var name="greetingView" class="com.wei.onlinebanking.ui.GreetingView" />
+	<var name="account" class="com.wei.onlinebanking.domain.BankAccount" />
+	<var name="tranDetail" class="com.wei.onlinebanking.dto.TransactionDetail" />
+	<var name="tranRecSearch" class="com.wei.onlinebanking.dto.TranRecSearch" />
+
+	<on-start>
+		<evaluate expression="userService.loadUserByUserName(currentUser.name)"
+			result="flowScope.user" />
+	</on-start>
+
+	<view-state id="accountHome" view="accountHome.xhtml">
+		<on-render>
+			<evaluate expression="accountService.loadAccountsByUser(user)"
+				result="viewScope.accounts" result-type="dataModel" />
+			<evaluate expression="accountService.cleanDataModel(account)" />
+			<evaluate expression="transactionService.cleanDataModel(tranDetail)" />
+		</on-render>
+		<transition on="editUserInfo" to="userInfo" />
+		<transition on="newAccount" to="addAccount" />
+		<transition on="withdrawMoney" to="withdrawDetail" />
+		<transition on="depositMoney" to="depositDetail" />
+		<transition on="transferMoney" to="transferDetail" />
+		<transition on="viewHistory" to="historyDetail" />
+	</view-state>
+
+	<!-- update user info -->
+	<view-state id="userInfo" view="userInfo.xhtml" model="user">
+		<transition on="confirmEdit" to="infoUpdated">
+			<evaluate expression="userService.updateUserInfo(user)" />
+		</transition>
+	</view-state>
+
+	<view-state id="infoUpdated" view="userInfoUpdated.xhtml" />
+
+	<!-- add new bank account -->
+	<view-state id="addAccount" view="newAccount.xhtml" model="account">
+		<transition on="confirmAccount" to="newAccountAdded">
+			<evaluate expression="accountService.createAccount(account, user)" />
+		</transition>
+	</view-state>
+
+	<view-state id="newAccountAdded" view="newAccountAdded.xhtml" />
+
+	<!-- perform money transaction -->
+	<view-state id="withdrawDetail" view="withdraw.xhtml" model="tranDetail">
+		<transition on="confirmWithdraw" to="tranSucceed">
+			<evaluate expression="transactionService.createWithdrawRec(tranDetail)" />
+		</transition>
+	</view-state>
+
+	<view-state id="depositDetail" view="deposit.xhtml" model="tranDetail">
+		<transition on="confirmDeposit" to="tranSucceed">
+			<evaluate expression="transactionService.createDepositRec(tranDetail)" />
+		</transition>
+	</view-state>
+
+	<view-state id="transferDetail" view="transfer.xhtml" model="tranDetail">
+		<transition on="confirmTransfer" to="tranSucceed">
+			<evaluate expression="transactionService.createTransferRec(tranDetail)" />
+		</transition>
+	</view-state>
+
+	<view-state id="tranSucceed" view="tranSucceed.xhtml" />
+
+	<!-- view transaction history -->
+	<view-state id="historyDetail" view="tranHistory.xhtml"
+		model="tranRecSearch">
+		<transition on="submitHistory" to="historyDetail2">
+			<evaluate
+				expression="transactionService.loadRecordsByAccountAndTime(tranRecSearch)"
+				result="flowScope.tranRecords" />
+		</transition>
+	</view-state>
+
+	<view-state id="historyDetail2" view="tranHistory2.xhtml" />
+
+	<end-state id="finish" view="externalRedirect:/logout"></end-state>
+
+	<global-transitions>
+		<transition on="cancel" to="accountHome" />
+		<transition on="backToHome" to="accountHome" />
+		<transition on="logout" to="finish" />
+	</global-transitions>
+
+</flow>

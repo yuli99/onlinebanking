@@ -1,0 +1,217 @@
+#container {
+	width: 91%;
+	min-height: 460px;
+	min-width: 1000px;
+	margin: 50px auto;
+	box-shadow: 2px 2px 10px #888;
+	background: url(images/noise.png);
+	padding-bottom: 70px;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: normal; 
+    font-style: normal;
+    border-radius: 7px 7px 7px 7px;	
+}
+
+#header {
+	height: 60px;
+	text-align: center;
+	background: url(images/bank.png) 0px 0px no-repeat #008000;
+	background-size: 80px;
+	color: white;
+	padding: 10px;
+	font-smooth: always;
+	text-shadow: 2px 2px 2px #333333;
+	border-radius: 7px 7px 0 0;
+}
+
+#line  {
+	width: 100%;
+	height: 10px;
+	background: #004600;
+}
+
+
+#footer {
+	height: 20px;
+	text-align: center;
+	background: #008000;
+	color: white;
+	padding: 5px;
+	font-smooth: always;
+	border-radius: 0 0 7px 7px;
+	position: relative;
+	bottom: -78px;
+}
+
+.fieldset {
+    margin: 100px auto 60px;
+	width: 50%;
+	color: #5D5D5D;
+	background: url(images/gray_texture.jpg);
+	border: 1px solid #A8A8A8;
+	box-shadow: 2px 2px 10px #888;
+	text-align: center;
+}
+
+.fieldset legend {
+    border: 1px solid #e0e0e0 !important;
+	background: #008000 !important;
+	margin-top: -25px;
+	margin-bottom: -21px;
+	color: white !important;
+	box-shadow: 1px 1px 2px #000000;
+	text-shadow: 1px 1px 1px #333333 !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
+
+.fieldset2 {
+    margin: 80px auto -20px;
+	width: 80%;
+	color: #5D5D5D;
+	background: url(images/gray_texture.jpg);
+	border: 1px solid #A8A8A8;
+	box-shadow: 2px 2px 10px #888;
+	text-align: center;
+}
+
+.fieldset3 {
+    margin: 80px auto 20px;
+	width: 55%;
+	color: #5D5D5D;
+	background: url(images/gray_texture.jpg);
+	border: 1px solid #A8A8A8;
+	box-shadow: 2px 2px 10px #888;
+	text-align: center;
+}
+
+.panelGrid {
+	margin: 30px auto; 
+	text-align: right;
+}
+
+.panelGrid2 {
+	margin: 20px auto;
+	width: 80%; 
+	text-align: left;
+	font-weight: bold !important;
+}
+
+.panelGrid3 {
+	margin: 20px auto; 
+	text-align: center;
+}
+
+.tooltip {
+    font-size: 11px;
+	font-weight: normal;
+	font-style: normal;
+	color: white;
+	background: #8f8f8f !important;
+	border: 1px solid #efefef;
+	padding: 6px;
+	box-shadow: 0px 5px 10px rgba(0, 0, 0, 0.8);  
+	text-shadow: 1px 1px 1px #333333;
+}
+
+.north {
+	width: 97%;
+	height: 25px;
+	border: 0px;
+	background: url(images/gray_texture.jpg);
+}
+
+.west {
+	width: 220px !important;
+}
+
+.center {
+	min-width: 400px !important;
+}
+
+.ui-layout-unit {
+	border: 0px;
+}
+
+.ui-layout-unit-content {
+	border: 0px;
+	background: url(images/gray_texture.jpg);
+}
+
+.greetingText {
+	width: 80%;
+	color: green;
+	font-size: 16px;
+	font-style: italic;
+	text-shadow: 1px 1px 1px white;
+	font-weight: bold;
+}
+
+.succeedText {
+	color: green;
+	font-size: 18px;
+	font-style: italic;
+	text-shadow: 1px 1px 1px white;
+	font-weight: bold;
+}
+
+.ui-dialog-titlebar {
+    background-color: #008000 !important;
+    color: white !important;
+    font-size: 12px !important;
+    text-shadow:1px 1px 1px #333333 !important;
+}
+
+.ui-widget-overlay {
+    background: none !important;
+}
+
+.ui-password-panel {
+    font-size: 11px;
+}
+
+.ui-message-error, .ui-message-info {
+    position: absolute !important;
+    margin-top: -10px;
+    box-shadow: 0px 1px 4px rgba(0, 0, 0, 0.8);
+}
+
+.ui-state-default .ui-icon-addfile {
+	background-image: url(images/addfile.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-withdraw {
+	background-image: url(images/withdraw.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-deposit {
+	background-image: url(images/deposit.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-transfer {
+	background-image: url(images/transfer.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-history {
+	background-image: url(images/history.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-accountHome {
+	background-image: url(images/home.png);
+	background-size: 14px;
+}
+
+.ui-state-default .ui-icon-logout {
+	background-image: url(images/logout.png);
+	background-size: 14px;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label {
+	text-align: left !important;
+}

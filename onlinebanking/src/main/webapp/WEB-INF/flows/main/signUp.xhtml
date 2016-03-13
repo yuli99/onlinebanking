@@ -1,0 +1,225 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/general.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Online Banking Sign Up" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="signUpForm">
+			<p:fieldset styleClass="fieldset" legend="Please Sign Up">
+				<p:focus />
+				<p:messages id="messages" globalOnly="true" />
+
+				<h:panelGrid id="regPanelGrid" styleClass="panelGrid"
+					cellspacing="8" columns="3">
+
+					<h:panelGroup>
+						<h:outputText value="User Name:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="userName" label="User Name"
+						value="#{user.userName}" required="true"
+						title="Please enter your user name!">
+						<f:validateLength minimum="2" maximum="30" />
+						<p:ajax event="keyup" update="userNameMsg" global="false"
+							listener="#{userService.checkAvailable}" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="userNameMsg" for="userName" />
+						<p:tooltip for="userName" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Password:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:password id="pass1" lable="Password" value="#{user.password}"
+						required="true" title="Please enter a password!" feedback="true"
+						match="pass2">
+						<f:validateLength min="3" />
+					</p:password>
+					<p:message id="pass1Msg" for="pass1" />
+
+					<h:panelGroup>
+						<h:outputText value="Repeat Password:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:password id="pass2" label="Password" required="true"
+						title="Please repeat the password!" />
+					<p:message id="pass2Msg" for="pass2" />
+
+					<h:panelGroup>
+						<h:outputText value="First Name:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="firstName" label="First Name"
+						value="#{user.firstName}" required="true"
+						title="Please enter your first name!">
+						<f:validateLength minimum="2" maximum="50" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="firstNameMsg" for="firstName" />
+						<p:tooltip for="firstName" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Last Name:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="lastName" label="Last Name"
+						value="#{user.lastName}" required="true"
+						title="Please enter your last name!">
+						<f:validateLength minimum="2" maximum="50" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="lastNameMsg" for="lastName" />
+						<p:tooltip for="lastName" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Middle Initial:" />
+						<h:outputText style="color:red" value="     " />
+					</h:panelGroup>
+					<p:inputText id="middleInitial" label="Middle Initial"
+						value="#{user.middleInitial}" maxlength="1"
+						title="Please enter your Middle Initial!">
+						<f:validateLength maximum="1" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="middleInitialMsg" for="middleInitial" />
+						<p:tooltip for="middleInitial" styleClass="tooltip"
+							showEvent="focus" hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Gender:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:selectOneRadio id="gender" value="#{user.gender}">
+						<f:selectItem itemLabel="Male" itemValue="M" />
+						<f:selectItem itemLabel="Female" itemValue="F" />
+						<f:validateBean disabled="false" />
+					</p:selectOneRadio>
+					<p:message id="genderMsg" for="gender" />
+
+					<h:panelGroup>
+						<h:outputText value="Date of Birth:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="dateOfBirth" label="Date of Birth"
+						value="#{user.dateOfBirth}" required="true"
+						title="Please enter your birthday(yyyy-mm-dd)!">
+						<f:convertDateTime pattern="yyyy-MM-dd" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="dateOfBirthMsg" for="dateOfBirth" />
+						<p:tooltip for="dateOfBirth" styleClass="tooltip"
+							showEvent="focus" hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Street:" />
+						<h:outputText style="color:red" value=" *   " />
+					</h:panelGroup>
+					<p:inputText id="street" label="Street" value="#{user.street}"
+						required="true" title="Please enter the street you live in!">
+						<f:validateLength minimum="2" maximum="100" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="streetMsg" for="street" />
+						<p:tooltip for="street" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="City:" />
+						<h:outputText style="color:red" value=" *   " />
+					</h:panelGroup>
+					<p:inputText id="city" label="City" value="#{user.city}"
+						required="true" title="Plese enter your city!">
+						<f:validateLength minimum="2" maximum="40" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="cityMsg" for="city" />
+						<p:tooltip for="city" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="State:" />
+						<h:outputText style="color:red" value=" *   " />
+					</h:panelGroup>
+					<p:inputText id="state" label="State" value="#{user.state}"
+						required="true" title="Please enter your state!">
+						<f:validateLength minimum="2" maximum="40" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="stateMsg" for="state" />
+						<p:tooltip for="state" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Zip Code:" />
+						<h:outputText style="color:red" value=" *   " />
+					</h:panelGroup>
+					<p:inputText id="zip" label="Zip" value="#{user.zip}"
+						required="true" title="Please enter your zip code!">
+						<f:validateRegex pattern="^\d{5}(?:[-\s]\d{4})?$" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="zipMsg" for="zip" />
+						<p:tooltip for="zip" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Phone:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="phone" label="Phone" value="#{user.phone}"
+						required="true" title="Please enter your phone number!">
+						<f:validateRegex
+							pattern="^(\+\d{1,2}\s)?\(?\d{3}\)?[-.\s]?\d{3}[-.\s]?\d{4}$" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="phoneMsg" for="phone" />
+						<p:tooltip for="phone" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<h:panelGroup>
+						<h:outputText value="Email:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:inputText id="email" label="Email" value="#{user.email}"
+						required="true" title="Please enter your email!">
+						<f:validateBean disabled="false" />
+					</p:inputText>
+					<h:panelGroup>
+						<p:message id="emailMsg" for="email" />
+						<p:tooltip for="email" styleClass="tooltip" showEvent="focus"
+							hideEvent="blur" />
+					</h:panelGroup>
+
+					<p:commandButton id="backToSignIn" action="backToSignIn"
+						immediate="true" icon="ui-icon-arrowreturnthick-1-w"
+						value="Back to Sign In" />
+					<p:commandButton id="submitButton" action="confirmSignUp"
+						update="regPanelGrid,messages" icon="ui-icon-check"
+						value="Sign Up" />
+				</h:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

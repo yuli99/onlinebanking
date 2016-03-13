@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans 
+	                    http://www.springframework.org/schema/beans/spring-beans.xsd">
+
+	<import resource="datasource-config.xml" />
+	<import resource="webflow-config.xml" />
+	<import resource="security-config.xml" />
+
+	<!-- DAO declarations -->
+	<bean id="userDao" class="com.wei.onlinebanking.dao.UserJpaDao" />
+	<bean id="accountDao" class="com.wei.onlinebanking.dao.AccountJpaDao" />
+	<bean id="transactionDao" class="com.wei.onlinebanking.dao.TransactionJpaDao" />
+
+	<!-- Services declarations -->
+	<bean id="userService" class="com.wei.onlinebanking.services.impl.UserServiceImpl">
+		<property name="userDao" ref="userDao" />
+	</bean>
+
+	<bean id="accountService" class="com.wei.onlinebanking.services.impl.AccountServiceImpl">
+		<property name="accountDao" ref="accountDao" />
+	</bean>
+
+	<bean id="transactionService"
+		class="com.wei.onlinebanking.services.impl.TransactionServiceImpl">
+		<property name="transactionDao" ref="transactionDao" />
+		<property name="accountDao" ref="accountDao" />
+	</bean>
+
+	<bean id="userAuthenticationProviderService"
+		class="com.wei.onlinebanking.services.impl.UserAuthenticationProviderServiceImpl">
+		<property name="authenticationManager" ref="authenticationManager" />
+	</bean>
+
+	<!-- UI declarations -->
+	<bean id="accountConverter" class="com.wei.onlinebanking.ui.AccountConverter">
+		<property name="accountService" ref="accountService" />
+	</bean>
+
+</beans>

@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/general.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Online Banking History" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form id="historyForm">
+			<p:fieldset styleClass="fieldset" legend="Transaction History">
+				<p:focus />
+				<p:messages id="messages" globalOnly="true" />
+
+				<h:panelGrid id="historyPanelGrid" styleClass="panelGrid"
+					cellspacing="8" columns="3">
+
+					<h:panelGroup>
+						<h:outputText value="Select Account:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:selectOneMenu id="account" value="#{tranRecSearch.account}"
+						converter="#{accountConverter}" style="width:175px">
+						<f:selectItems value="#{accountService.loadAccountsByUser(user)}"
+							var="acct" itemValue="#{acct}" itemLable="#{acct.id}" />
+					</p:selectOneMenu>
+					<p:message id="accountMsg" for="account" />
+
+					<h:panelGroup>
+						<h:outputText value="Start Date:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:calendar id="startDate" value="#{tranRecSearch.startDate}"
+						maxdate="#{tranRecSearch.endDate}">
+						<p:ajax event="dateSelect" update="endDate" />
+					</p:calendar>
+					<p:message id="startDateMsg" for="startDate" />
+
+					<h:panelGroup>
+						<h:outputText value="End Date:" />
+						<h:outputText style="color:red" value=" *  " />
+					</h:panelGroup>
+					<p:calendar id="endDate" value="#{tranRecSearch.endDate}"
+						mindate="#{tranRecSearch.startDate}"
+						disabled="#{empty tranRecSearch.startDate}">
+						<p:ajax event="dateSelect" update="startDate" />
+					</p:calendar>
+					<p:message id="endDateMsg" for="endDate" />
+
+					<p:commandButton id="cancelButton" action="cancel" immediate="true"
+						icon="ui-icon-arrowreturnthick-1-w" value="Cancel" />
+					<p:commandButton id="submitButton" action="submitHistory"
+						update="historyPanelGrid,messages" icon="ui-icon-check"
+						value="View History" />
+				</h:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

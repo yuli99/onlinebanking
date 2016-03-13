@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+	xmlns:ui="http://java.sun.com/jsf/facelets"
+	xmlns:h="http://java.sun.com/jsf/html"
+	xmlns:f="http://java.sun.com/jsf/core"
+	xmlns:p="http://primefaces.org/ui"
+	template="/WEB-INF/templates/general.xhtml">
+
+	<ui:define name="title">
+		<h:outputText value="Online Banking New Account" />
+	</ui:define>
+
+	<ui:define name="content">
+		<h:form>
+			<p:fieldset styleClass="fieldset">
+				<h:panelGrid styleClass="panelGrid2" cellspacing="12" columns="2">
+					<f:facet name="header">
+						<h:graphicImage url="/css/images/succeed.png" height="18" />
+						<h:outputText value="   New Bank Account Created successfully!"
+							styleClass="succeedText" />
+					</f:facet>
+
+					<h:outputText value="Account Id:" />
+					<h:outputText value="#{account.id}" />
+
+					<h:outputText value="Account Type:" />
+					<h:outputText value="#{account.accountType}" />
+
+					<h:outputText value="Current Balance:" />
+					<h:outputText value="#{account.accountBalance}">
+						<f:convertNumber pattern="#0.00" />
+					</h:outputText>
+
+					<h:outputText value="Date of Created:" />
+					<h:outputText value="#{account.dateOfCreated}">
+						<f:convertDateTime pattern="yyyy-MM-dd HH:mm:ss" />
+					</h:outputText>
+
+					<p:commandButton id="homeButton" action="backToHome"
+						immediate="true" icon="ui-icon-accountHome" value="Back to Home" />
+					<p:commandButton id="logout" action="logout" immediate="true"
+						icon="ui-icon-logout" value="Logout" />
+				</h:panelGrid>
+			</p:fieldset>
+		</h:form>
+	</ui:define>
+
+</ui:composition>

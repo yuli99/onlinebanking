@@ -1,0 +1,155 @@
+#container {
+	width: 100%;
+	background: white;
+	font-family: Verdana;
+	font-size: 12px;
+	font-weight: normal; 
+    font-style: normal;
+ }
+
+#header {
+	height: 30px;
+	margin-top: 60px;
+	font-size: 10px !important;
+	text-align: center;
+	color: black;
+}
+
+#line  {
+	display: none;
+}
+
+
+#footer {
+	display: none;
+}
+
+.fieldset {
+    margin: 40px auto;
+	width: 70%;
+	text-align: center;
+}
+
+.fieldset legend {
+	margin-top: -25px;
+	margin-bottom: -21px;
+	color: black !important;
+	font-weight: normal !important;
+	font-style: normal !important;
+}
+
+.fieldset2 {
+    margin: 80px auto -20px;
+	width: 90%;
+	text-align: center;
+}
+
+.fieldset3 {
+    margin: 80px auto 20px;
+	width: 90%;
+	text-align: center;
+}
+
+.panelGrid {
+	margin: 30px auto; 
+	text-align: right;
+}
+
+.panelGrid2 {
+	margin: 20px auto;
+	width: 90%;
+	text-align: left;
+	font-weight: bold !important;
+}
+
+.panelGrid3 {
+	margin: 20px auto;
+	width: 100%; 
+	text-align: center;
+	border: 0px;
+}
+
+.tooltip {
+    display: none;
+}
+
+.north {
+	width: 97%;
+	height: 25px;
+	border: 0px;
+}
+
+.west {
+	width: 30% !important;
+}
+
+.center {
+	width: 62% !important;
+}
+
+.ui-layout-unit {
+	border: 0px;
+}
+
+.ui-layout-unit-content {
+	border: 0px;
+}
+
+.greetingText {
+	width: 80%;
+	color: green;
+	font-size: 16px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.succeedText {
+	color: green;
+	font-size: 18px;
+	font-style: italic;
+	font-weight: bold;
+}
+
+.ui-widget-overlay {
+    background: none !important;
+}
+
+.ui-password-panel {
+    font-size: 11px;
+}
+
+.ui-message-error, .ui-message-info {
+   display: none;
+}
+
+.ui-state-default .ui-icon-addfile {
+	display: none;
+}
+
+.ui-state-default .ui-icon-withdraw {
+	display: none;
+}
+
+.ui-state-default .ui-icon-deposit {
+	display: none;
+}
+
+.ui-state-default .ui-icon-transfer {
+	display: none;
+}
+
+.ui-state-default .ui-icon-history {
+	display: none;
+}
+
+.ui-state-default .ui-icon-accountHome {
+	display: none;
+}
+
+.ui-state-default .ui-icon-logout {
+	display: none;
+}
+
+.ui-selectonemenu .ui-selectonemenu-label {
+	text-align: left !important;
+}
