@@ -43,7 +43,7 @@
 					<p:password id="pass1" lable="Password" value="#{user.password}"
 						required="true" title="Please enter a password!" feedback="true"
 						match="pass2">
-						<f:validateLength min="3" />
+						<f:validateLength minimum="3" />
 					</p:password>
 					<p:message id="pass1Msg" for="pass1" />
 
